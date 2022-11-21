@@ -21,7 +21,7 @@ class StorageManager {
         return container
     }()
     
-    init() {}
+    private init() {}
 
     // MARK: - Core Data Saving support
     func saveContext() {
