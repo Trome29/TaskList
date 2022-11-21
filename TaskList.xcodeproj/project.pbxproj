@@ -39,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30443433292B6AE900830304 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30DC7AE42926A1170034F417 /* TaskList.xcdatamodeld */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		30DC7ACF2926A1170034F417 = {
 			isa = PBXGroup;
 			children = (
@@ -58,12 +66,12 @@
 		30DC7ADA2926A1170034F417 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
-				30DC7AF6292750F30034F417 /* App */,
+				30443433292B6AE900830304 /* Models */,
 				30DC7AF7292750F90034F417 /* ViewControllers */,
-				30DC7AFA292751380034F417 /* CoreData */,
+				30DC7AF6292750F30034F417 /* App */,
+				30DC7AFA292751380034F417 /* Services */,
 				30DC7AF92927510F0034F417 /* Storyboards */,
 				30DC7AF8292751070034F417 /* Resources */,
-				30DC7AE42926A1170034F417 /* TaskList.xcdatamodeld */,
 			);
 			path = TaskList;
 			sourceTree = "<group>";
@@ -102,12 +110,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		30DC7AFA292751380034F417 /* CoreData */ = {
+		30DC7AFA292751380034F417 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				30DC7AF4292750E60034F417 /* StorageManager.swift */,
 			);
-			path = CoreData;
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
