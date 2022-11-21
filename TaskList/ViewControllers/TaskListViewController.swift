@@ -12,17 +12,20 @@ import CoreData
 
 class TaskListViewController: UITableViewController {
     
-    private let viewContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     private let cellID = "task"
     private var taskList: [Task] = []
+    
+    private let viewContext = StorageManager.shared.persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupNavigationBar()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
-        fetchData()
+        StorageManager.shared.fetchData { tasks in
+            taskList = tasks
+            
+        }
     }
     
     private func setupNavigationBar() {
@@ -50,22 +53,22 @@ class TaskListViewController: UITableViewController {
         showAlert(withTitle: "New Task", withMessage: "What do you want to do?", andText: "")
     }
     
-    private func fetchData() {
-        let fetchRequest = Task.fetchRequest()
-        
-        do {
-            taskList = try viewContext.fetch(fetchRequest)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-    }
+//    private func fetchData() {
+//        let fetchRequest = Task.fetchRequest()
+//
+//        do {
+//            taskList = try viewContext.fetch(fetchRequest)
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//    }
     
     private func showAlert(withTitle title: String, withMessage message: String, andText text: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] _ in
             guard let task = alert.textFields?.first?.text, !task.isEmpty else { return }
             if text == "" {
-                save(task)
+                addTask(task)
             } else {
                 update(task)
             }
@@ -82,7 +85,7 @@ class TaskListViewController: UITableViewController {
         present(alert, animated: true)
     }
     
-    private func save(_ taskName: String) {
+    private func addTask(_ taskName: String) {
         let task = Task(context: viewContext)
         task.title = taskName
         taskList.append(task)
@@ -143,9 +146,11 @@ extension TaskListViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+            self.viewContext.delete(self.taskList[indexPath.row])
             self.taskList.remove(at: indexPath.row)
+            StorageManager.shared.saveContext()
             
-            self.tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         configuration.performsFirstActionWithFullSwipe = true
