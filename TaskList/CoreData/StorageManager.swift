@@ -9,7 +9,6 @@ import CoreData
 import Foundation
 
 class StorageManager {
-    
     static let shared = StorageManager()
     
     let persistentContainer: NSPersistentContainer = {
@@ -39,7 +38,6 @@ class StorageManager {
     
     func fetchData(_ completion: ([Task]) -> Void) {
         let fetchRequest = Task.fetchRequest()
-        
         do {
             let task = try persistentContainer.viewContext.fetch(fetchRequest)
             completion(task)

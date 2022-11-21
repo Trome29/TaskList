@@ -58,11 +58,11 @@
 		30DC7ADA2926A1170034F417 /* TaskList */ = {
 			isa = PBXGroup;
 			children = (
+				30DC7AF6292750F30034F417 /* App */,
 				30DC7AF7292750F90034F417 /* ViewControllers */,
 				30DC7AFA292751380034F417 /* CoreData */,
-				30DC7AF6292750F30034F417 /* App */,
-				30DC7AF8292751070034F417 /* Resources */,
 				30DC7AF92927510F0034F417 /* Storyboards */,
+				30DC7AF8292751070034F417 /* Resources */,
 				30DC7AE42926A1170034F417 /* TaskList.xcdatamodeld */,
 			);
 			path = TaskList;

@@ -8,21 +8,24 @@
 import UIKit
 
 class TaskListViewController: UITableViewController {
+    // MARK: - Private Properties
     private let viewContext = StorageManager.shared.persistentContainer.viewContext
     private let cellID = "task"
-    
     private var taskList: [Task] = []
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupNavigationBar()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+        
         StorageManager.shared.fetchData { tasks in
             taskList = tasks
         }
     }
     
+    // MARK: - Private Methods
     private func setupNavigationBar() {
         title = "Task List"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -79,13 +82,11 @@ class TaskListViewController: UITableViewController {
         
         let cellIndex = IndexPath(row: taskList.count - 1, section: 0)
         tableView.insertRows(at: [cellIndex], with: .automatic)
-        
         StorageManager.shared.saveContext()
     }
     
     private func updateTask(_ taskName: String) {
         let cellIndex = IndexPath(row: tableView.indexPathForSelectedRow?.row ?? 6, section: 0)
-        
         taskList[cellIndex.row].title = taskName
         tableView.reloadRows(at: [cellIndex], with: .automatic)
         StorageManager.shared.saveContext()
@@ -108,7 +109,6 @@ extension TaskListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //tableView.deselectRow(at: indexPath, animated: true)
         showAlert(
             withTitle: "Update Task",
             withMessage: "Do you want to change the task?",
