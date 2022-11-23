@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301938B9292E0599006CE876 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301938B8292E0599006CE876 /* AlertController.swift */; };
 		30DC7ADC2926A1170034F417 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC7ADB2926A1170034F417 /* AppDelegate.swift */; };
 		30DC7ADE2926A1170034F417 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC7ADD2926A1170034F417 /* SceneDelegate.swift */; };
 		30DC7AE02926A1170034F417 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC7ADF2926A1170034F417 /* TaskListViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301938B8292E0599006CE876 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		30DC7AD82926A1170034F417 /* TaskList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30DC7ADB2926A1170034F417 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30DC7ADD2926A1170034F417 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				30DC7ADF2926A1170034F417 /* TaskListViewController.swift */,
+				301938B8292E0599006CE876 /* AlertController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301938B9292E0599006CE876 /* AlertController.swift in Sources */,
 				30DC7AE62926A1170034F417 /* TaskList.xcdatamodeld in Sources */,
 				30DC7AE02926A1170034F417 /* TaskListViewController.swift in Sources */,
 				30DC7AF5292750E60034F417 /* StorageManager.swift in Sources */,
